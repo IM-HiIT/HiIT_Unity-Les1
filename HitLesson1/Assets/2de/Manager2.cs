@@ -1,8 +1,5 @@
 using System;
-using System.Collections;
-using System.Collections.Generic;
 using TMPro;
-using UnityEditor.Profiling.Memory.Experimental;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
@@ -19,14 +16,16 @@ public class Manager2 : MonoBehaviour
 
     private void Start()
     {
+        Cursor.visible = false;
         Timer = wals.GetTimer() / count;
     }
     void Update()
     { 
         _Timer -= Time.deltaTime;
         if (count != aantal && _Timer <= 0) { Place(); }
-        if(Input.GetKeyDown(KeyCode.Escape)) { ResetHighScores(); }
+        if(Input.GetKeyDown(KeyCode.F1)) { ResetHighScores(); }
         if (Input.GetKeyDown(KeyCode.RightAlt) && panel.activeInHierarchy) { ResetScene(); }
+        if (Input.GetKeyDown(KeyCode.Escape)){  Application.Quit(); }
     }
     private void Place()
     {
@@ -39,6 +38,7 @@ public class Manager2 : MonoBehaviour
     public void HitWall(int punten)
     {
         Time.timeScale = 0;
+        Cursor.visible = true;
         SortArray();
         if (punten > PlayerPrefs.GetInt(names[0])) // dit allemaal goed kunnen uitleggen. is nog een puntje vooral de playerprefs principe
         {
@@ -73,7 +73,7 @@ public class Manager2 : MonoBehaviour
     }
     public void ResetScene()
     {
-        SceneManager.LoadScene(sceneBuildIndex:1);
+        SceneManager.LoadScene(sceneBuildIndex:0);
         Time.timeScale = 1;
     }
     private void PrintScores()
