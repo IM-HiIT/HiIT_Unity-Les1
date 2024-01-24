@@ -50,15 +50,11 @@ public class Menu : MonoBehaviour
             }
         }
     }
-
-    public void lit(int oke, float logische)
-    {
-
-    }
     public void Switch()
     {
         SceneManager.LoadScene(1);
         flip = true;
+
     }
 
 }
