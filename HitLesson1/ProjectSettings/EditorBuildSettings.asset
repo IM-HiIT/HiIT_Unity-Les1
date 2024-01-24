@@ -6,7 +6,10 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
-    path: Assets/2de/JAWOL.unity
+    path: Assets/Scenes/Music.unity
+    guid: d98b31aee9a6bad40b2808c2eaa73c9c
+  - enabled: 1
+    path: Assets/Scenes/JAWOL.unity
     guid: 425381407222a9e4d820526dc772ef3c
   - enabled: 1
     path: Assets/Scenes/SampleScene.unity
