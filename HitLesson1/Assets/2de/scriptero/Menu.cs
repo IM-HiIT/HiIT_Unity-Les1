@@ -19,7 +19,11 @@ public class Menu : MonoBehaviour
 
     private void Start()
     {
-        for (int i = 0; i < slid.Length; i++) { slid[i].value = PlayerPrefs.GetFloat(slid[i].name); SetFloat(i); }
+        for (int i = 0; i < slid.Length; i++) 
+        {
+            if (!PlayerPrefs.HasKey(slid[i].name)) { PlayerPrefs.SetFloat(slid[i].name, 1); }
+            slid[i].value = PlayerPrefs.GetFloat(slid[i].name); SetFloat(i); 
+        }
     }
     public void SetFloat(int i)
     {
