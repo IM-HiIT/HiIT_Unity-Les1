@@ -9,8 +9,10 @@ public class Grond : MonoBehaviour
     [SerializeField] private bool First;
     [SerializeField] private float Distance;
     [SerializeField] private Walls2 Wall;
+    private EggTimerAction Egg;
     private Rigidbody2D rd;
-    private float Timer;
+    private float Timer; 
+    private float _Timer;
 
     void Start()
     {
@@ -19,20 +21,16 @@ public class Grond : MonoBehaviour
 
         rd.velocity = new Vector2(-Speed, 0);
         Timer = Distance / Speed;
-
-        if (First) Respawn(Timer * 0.5f);
-        else Respawn(Timer);
+        _Timer = Timer;
+        if (First) _Timer *= 0.5f;
     }
-    private void Respawn(float _Timer)
+    private void Update()
     {
-        EggTimer.Instance.Execute(() =>
-        {
+        _Timer -= Time.deltaTime;
+        if(_Timer < 0) 
+        { 
             rd.transform.position = new Vector2(18, -6.9f);
-        })
-        .WithDelay(_Timer)
-        .OnFinish(() =>
-        {
-             Respawn(Timer);
-        });
+            _Timer = Timer;
+        }
     }
 }

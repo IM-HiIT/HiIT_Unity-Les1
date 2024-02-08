@@ -6,6 +6,7 @@ public class Walls2 : MonoBehaviour
     [SerializeField] private int Speed;
     private Rigidbody2D rd;
     [SerializeField] private float Timer;
+    private EggTimerAction Egg;
 
     void Start()
     {
@@ -16,7 +17,7 @@ public class Walls2 : MonoBehaviour
 
     private void Respawn()
     {
-        EggTimer.Instance.Execute(() =>
+        Egg = EggTimer.Instance.Execute(() =>
         {
             int r = Random.Range(-3, 4);
             rd.transform.position = new Vector2(10, r);
@@ -29,5 +30,8 @@ public class Walls2 : MonoBehaviour
     }
     public float GetTimer() {  return Timer; }
     public int GetSpeed() { return Speed; }
-    
+    public void KillEgg()
+    {
+        EggTimer.Instance.Remove(Egg);
+    }
 }

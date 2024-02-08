@@ -14,9 +14,12 @@ public class Manager2 : MonoBehaviour
     [SerializeField] private string[] names;
     [SerializeField] private TMP_Text text;
     [SerializeField] private GameObject panel;
+    private EggTimerAction[] EggTimerActions;
+    private Walls2[] muren;
+    private int j = 0;
 
     private void Start()
-    {
+    { 
         Cursor.visible = false;
         PlaceWall();
     }
@@ -28,22 +31,28 @@ public class Manager2 : MonoBehaviour
     private void PlaceWall()
     {
         float Timer = wals.GetTimer() / count;
-        print(Timer);
+        EggTimerActions = new EggTimerAction[count];
+        muren = new Walls2[count];
+        Walls2 wall = null;
         for (int i = 0; i < count; i++)
         {
-            EggTimer.Instance.Execute(() =>
+            EggTimerActions[i] = EggTimer.Instance.Execute(() =>
             {
                 int r = Random.Range(-3, 4);
-                Walls2 wall = Instantiate(wals, new Vector2(10, r), Quaternion.identity);
+                wall = Instantiate(wals, new Vector2(10, r), Quaternion.identity);
                 wall.transform.SetParent(this.transform, true);
+                muren[j] = wall;
+                j++;
             })
             .WithDelay(Timer * i);
+
         }
     }
     public void HitWall(int punten)
     {
         Time.timeScale = 0;
         Cursor.visible = true;
+        KillEgg();
         SortArray();
         if (punten > PlayerPrefs.GetInt(names[0])) // dit allemaal goed kunnen uitleggen. is nog een puntje vooral de playerprefs principe
         {
@@ -89,6 +98,15 @@ public class Manager2 : MonoBehaviour
             lit += "\n" + (names.Length - i) + ": " + PlayerPrefs.GetInt(names[i]);
         }
         text.text = lit;
+    }
+    private void KillEgg()
+    {
+        print(EggTimerActions.Length);
+        for (int i= 0;i< EggTimerActions.Length; i++)
+        {
+            EggTimer.Instance.Remove(EggTimerActions[i]);
+            if (muren[i] != null) { muren[i].KillEgg(); }
+        }
     }
 }
 
