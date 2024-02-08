@@ -1,4 +1,6 @@
+using Cikoria.EggTimer;
 using System;
+using System.Runtime.InteropServices.WindowsRuntime;
 using TMPro;
 using UnityEngine;
 using UnityEngine.SceneManagement;
@@ -8,10 +10,7 @@ using Random = UnityEngine.Random;
 public class Manager2 : MonoBehaviour
 {
     [SerializeField] private Walls2 wals;
-    private float Timer;
-    private float _Timer;
     [SerializeField] private int count;
-    private int aantal;
     [SerializeField] private string[] names;
     [SerializeField] private TMP_Text text;
     [SerializeField] private GameObject panel;
@@ -19,23 +18,27 @@ public class Manager2 : MonoBehaviour
     private void Start()
     {
         Cursor.visible = false;
-        Timer = wals.GetTimer() / count;
+        PlaceWall();
     }
     void Update()
     { 
-        _Timer -= Time.deltaTime;
-        if (count != aantal && _Timer <= 0) { PlaceWall(); }
         if(Input.GetKeyDown(KeyCode.F1)) { ResetHighScores(); }
         if (Input.GetKeyDown(KeyCode.RightAlt) && panel.activeInHierarchy) { ResetScene(); }
-        if (Input.GetKeyDown(KeyCode.Escape)){  Application.Quit(); }
     }
     private void PlaceWall()
     {
-        int r = Random.Range(-3, 4);
-        aantal++;
-        Walls2 wall = Instantiate(wals, new Vector2(10, r), Quaternion.identity);
-        wall.transform.SetParent(this.transform, true);
-        _Timer = Timer;
+        float Timer = wals.GetTimer() / count;
+        print(Timer);
+        for (int i = 0; i < count; i++)
+        {
+            EggTimer.Instance.Execute(() =>
+            {
+                int r = Random.Range(-3, 4);
+                Walls2 wall = Instantiate(wals, new Vector2(10, r), Quaternion.identity);
+                wall.transform.SetParent(this.transform, true);
+            })
+            .WithDelay(Timer * i);
+        }
     }
     public void HitWall(int punten)
     {
@@ -88,3 +91,5 @@ public class Manager2 : MonoBehaviour
         text.text = lit;
     }
 }
+
+

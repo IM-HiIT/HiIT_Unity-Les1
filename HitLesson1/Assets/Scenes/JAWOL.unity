@@ -225,7 +225,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f5405a69a987286478640ebb92a06899, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  mane: {fileID: 1905613753}
+  mane: {fileID: 1905613755}
   text: {fileID: 1613210386}
   sprong: 6
   audio:
@@ -1817,7 +1817,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1905613753}
+      - m_Target: {fileID: 1905613755}
         m_TargetAssemblyTypeName: Manager2, Assembly-CSharp
         m_MethodName: ResetScene
         m_Mode: 1
@@ -2138,7 +2138,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1905613754}
-  - component: {fileID: 1905613753}
+  - component: {fileID: 1905613755}
   m_Layer: 0
   m_Name: Manager
   m_TagString: Untagged
@@ -2146,28 +2146,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!114 &1905613753
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1905613752}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f318aca296872e64a8e4b26630b59895, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  wals: {fileID: 749849149774437913, guid: 5a33ceb4052ef6f41a52569900656486, type: 3}
-  count: 4
-  names:
-  - score1
-  - score2
-  - score3
-  - score4
-  - score5
-  text: {fileID: 1372607204}
-  panel: {fileID: 478383187}
 --- !u!4 &1905613754
 Transform:
   m_ObjectHideFlags: 0
@@ -2183,6 +2161,28 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1905613755
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1905613752}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f318aca296872e64a8e4b26630b59895, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  wals: {fileID: 749849149774437913, guid: 5a33ceb4052ef6f41a52569900656486, type: 3}
+  count: 5
+  names:
+  - 1
+  - 2
+  - 3
+  - 4
+  - 5
+  text: {fileID: 1372607204}
+  panel: {fileID: 478383187}
 --- !u!1 &2052583142
 GameObject:
   m_ObjectHideFlags: 0

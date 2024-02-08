@@ -9,7 +9,6 @@ using UnityEngine.UI;
 
 public class Menu : MonoBehaviour
 {
-    // Start is called before the first frame update
 
     [SerializeField] private AudioMixer mix;
     [SerializeField] private Slider[] slid;
@@ -33,9 +32,9 @@ public class Menu : MonoBehaviour
     private void Update()
     {
         if (Input.GetKeyDown(KeyCode.Escape)) { Application.Quit(); }
-        if (Input.GetKeyDown(KeyCode.Tab)){ menu(); }
+        if (Input.GetKeyDown(KeyCode.Tab)){ Menuu(); }
     }
-    public void menu()
+    public void Menuu()
     {
         if (!pref.activeInHierarchy)
         {
@@ -58,7 +57,6 @@ public class Menu : MonoBehaviour
     {
         SceneManager.LoadScene(1);
         flip = true;
-
     }
 
 }

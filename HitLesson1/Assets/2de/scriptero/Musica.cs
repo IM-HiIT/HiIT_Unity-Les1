@@ -26,14 +26,15 @@ public class Musica : MonoBehaviour
         musicDuration = (double)musicClip[audioToggle].samples / musicClip[audioToggle].frequency;
         goalTime += musicDuration;
 
-        audioToggle = 1 - audioToggle;    }
+        audioToggle = 1 - audioToggle;    
+    }
     private void Update()
     {
 
         if (AudioSettings.dspTime > goalTime - 2)
         {
             PlayScheduledClip();
-            ClipUpdate();
+            //ClipUpdate();
         }
     }
     private void ClipUpdate()
