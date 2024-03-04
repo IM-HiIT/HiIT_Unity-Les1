@@ -620,7 +620,7 @@ PrefabInstance:
     - target: {fileID: 2879412561721877989, guid: 9c4ae7bb6560a3b43a855a3ed173c988, type: 3}
       propertyPath: OutputAudioMixerGroup
       value: 
-      objectReference: {fileID: -1994794724818843886, guid: 68622ee7f25d56045aa8806c416abdd4, type: 2}
+      objectReference: {fileID: 0}
     - target: {fileID: 4158330384686622689, guid: 9c4ae7bb6560a3b43a855a3ed173c988, type: 3}
       propertyPath: m_Name
       value: Music
@@ -628,7 +628,7 @@ PrefabInstance:
     - target: {fileID: 4641680612685807264, guid: 9c4ae7bb6560a3b43a855a3ed173c988, type: 3}
       propertyPath: OutputAudioMixerGroup
       value: 
-      objectReference: {fileID: -1994794724818843886, guid: 68622ee7f25d56045aa8806c416abdd4, type: 2}
+      objectReference: {fileID: 0}
     - target: {fileID: 5197509392389622830, guid: 9c4ae7bb6560a3b43a855a3ed173c988, type: 3}
       propertyPath: m_AnchorMax.x
       value: 0
